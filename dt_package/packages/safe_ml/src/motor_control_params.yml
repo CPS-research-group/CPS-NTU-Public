@@ -1,0 +1,14 @@
+# Driving Parameters
+#
+# Velocity is the desired forward velocity.
+# p is the amount of proportional control to be applied:
+# i is the amount of integral control to be applied
+# d is the amount of derivative control to be applied
+# right_boost and left_boost are constant velocities added to their respective
+#    wheels to componsate for poorly manufactured motors
+velocity: 0.5
+p: 0.2
+i: 0.0
+d: 0.1
+left_boost: 0.0
+right_boost: 0.0

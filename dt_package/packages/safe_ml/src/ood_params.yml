@@ -1,0 +1,7 @@
+# OOD module Parameters
+#
+# model: 2 types - bi3dof_nuscenes.pt or bi3dof_synthia.pt
+model: betav_duckie_epoch10.pt
+
+#torch_device: cpu or tpu
+torch_device: cpu

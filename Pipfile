@@ -1,0 +1,24 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+duckietown-shell = "*"
+roslibpy = "*"
+opencv-python = "*"
+numpy = "*"
+pyrosbag = "*"
+torch = "*"
+torchvision = "*"
+matplotlib = "*"
+pandas = "*"
+sklearn = "*"
+pylint = "*"
+pytorch-lightning = "*"
+scikit-image = "*"
+
+[dev-packages]
+
+[requires]
+python_version = "3.8"

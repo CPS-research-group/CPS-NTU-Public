@@ -1,0 +1,49 @@
+# Preprocessing Parameters
+#
+# width is the desired width in pixels
+# height is the desired height in pixels
+# fps in the desired detection cycle time in Hz
+width: 128
+height: 96
+fps: 5
+
+# CV Parameters
+#
+# Color mask describes the upper and lower bound for colors we are interested
+# in in RGB space.  Change this if operating with alternative lane line colors.
+#
+# Horizon mask is a number from 0 to 1 describing how much of the top half of
+# the picture to crop. (No lanes in the sky so we can just discard that
+# information)
+#
+# Gaussian blur is the the size of the blurring filter to use (in pixels).
+# This is used to help smooth irregularities in the raw image.
+#
+# Canny contains the two parameters passed to Canny edge detection: threshold 1
+# and threshold 2
+#
+# Line detection are parameters fed into the Hough Transformer.  For details
+# see the OpenCV documentation.
+#
+# Boundary is what left most and right most percentage of the image will be
+# used to detect the lane boundary markers.
+color mask:
+    lower bound: [0, 0, 0]
+    upper bound: [128, 128, 128]
+horizon mask: 0.5
+gaussian blur: 5
+canny:
+    threshold 1: 200
+    threshold 2: 400
+line detection:
+    rho: 1
+    min threshold: 10
+    min length: 8
+    max gap: 4
+boundary: 0.5
+
+# Post Processing Parameters
+#
+# lpf size is the size of the moving average filter (low pass filter) used to
+# reduce noise on the deviation angle detected by the lane follower
+lpf size: 5
