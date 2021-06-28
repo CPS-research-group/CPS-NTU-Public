@@ -1,5 +1,5 @@
 # SafeML
-This repository contains the implementation used in the DESTION2021 paper: *Embedded Out-of-Distribution Detection on an Autonomous Robot Platform*.
+This repository contains the implementation used in the DESTION2021 paper: *Embedded Out-of-Distribution Detection on an Autonomous Robot Platform*.  The data gathered during the experiments presented in the paper is available [here](https://researchdata.ntu.edu.sg/dataset.xhtml?persistentId=doi:10.21979/N9/FVVHNK).
 
 ## Quick Start
 This repo contains a Duckietown package used to perform experiments on the Safe ML project.  Before you can run the project, you will have to install the required dependencies.
@@ -13,7 +13,7 @@ Please note: currently only DB18 hardware is supported.
 
 ```
 $ git clone <this repo>
-$ cd CodeBase_SafeML/dt_package
+$ cd CPS-NTU-Public/dt_package
 $ pip install pipenv
 $ pipenv install
 $ pipenv shell
