@@ -107,6 +107,9 @@ sudo cp arch/arm/boot/zImage /boot/$KERNEL.img
 ## β-VAE OOD Detector Design
 
 ### Data Generation (Phase I)
+In our experiments we considered a β-VAE trained on two in-distribution data partitions: rain and brightness.  In the ```data``` folder, the ```prep_vids.py``` script can be used to digitally augment images with rain or brightness.  The brightness transform is a simple value reduction in HSV color space.  Rain is simulated by randomly scattering 3 different drop sizes across the image; the more intense the rain, the greater the probability of encountering a drop at any given point.
+
+To generate the training, calibration, and test data sets, you can use the ```prep_dataset.sh``` in the ```data``` folder.  This script requires curl as it will attempt to download the raw images from Dr. NTU.
 
 ### Hyperparameter Tuning (Phase II)
 
