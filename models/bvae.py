@@ -538,7 +538,8 @@ class Encoder(torch.nn.Module):
                  n_latent: int,
                  n_chan: int,
                  input_d: Tuple[int],
-                 activation: torch.nn.Module = torch.nn.ReLU()) -> None:
+                 activation: torch.nn.Module = torch.nn.ReLU(),
+                 head2logvar: str = 'logvar') -> None:
         super(Encoder, self).__init__()
         self.n_latent = n_latent
         self.n_chan = n_chan
@@ -613,6 +614,7 @@ class Encoder(torch.nn.Module):
         self.enc_dense4mu_af = activation
         self.enc_dense4var = torch.nn.Linear(250, self.n_latent)
         self.enc_dense4var_af = activation
+        self.enc_head2logvar = self.Head2LogVar(head2logvar)
 
     def encode(self, x: torch.Tensor) -> Tuple[torch.Tensor]:
         """Encode tensor x to its latent representation.
@@ -658,10 +660,11 @@ class Encoder(torch.nn.Module):
         mu = self.enc_dense4mu(z)
         mu = self.enc_dense4mu_af(mu)
 
-        var = self.enc_dense4var(z)
-        var = self.enc_dense4var_af(var)
+        pvar = self.enc_dense4var(z)
+        pvar = self.enc_dense4var_af(pvar)
+        logvar = self.enc_head2logvar(pvar)
 
-        return mu, var
+        return mu, logvar
 
     def get_layer_size(self, layer: int) -> Tuple[int]:
         """Given a network with some input size, calculate the dimensions of
@@ -693,14 +696,60 @@ class Encoder(torch.nn.Module):
         """
         return self.encode(x)
 
+    class Head2LogVar:
+        """This class defines the final layer on one of the encoder heads.
+        Essentially it performs an element-wise operation on the output of
+        each neuron in the preceding layer in order to transform the input
+        to log(var).
+
+        Args:
+            logvar - transform from what to logvar: 'logvar', 'logvar+1',
+                'neglogvar', or 'var'.
+        """
+
+        def __init__(self, type: str = 'logvar'):
+            self.eps = 1e-6
+            self.type = {
+                'logvar': self.logvar,
+                'logvar+1': self.logvarplusone,
+                'neglogvar': self.neglogvar,
+                'var': self.var}[type]
+
+        def logvar(self, x: torch.Tensor):
+            """IF x == log(sig^2):
+            THEN x = log(sig^2)"""
+            return x
+
+        def logvarplusone(self, x: torch.Tensor):
+            """IF x = log(sig^2 + 1)
+            THEN log(e^x - 1) = log(sig^2)"""
+            return x.exp().add(-1 + self.eps).log()
+
+        def neglogvar(self, x: torch.Tensor):
+            """IF x = -log(sig^2)
+            THEN -x = log(sig^2)"""
+            return x.neg()
+
+        def var(self, x: torch.Tensor):
+            """IF x = sig^2
+            THEN log(x) = log(sig^2)"""
+            return x.add(self.eps).log()
+
+        def __call__(self, input: torch.Tensor):
+            """Runs when calling instance of object."""
+            return self.type(input)
+
+
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser('Train or convert a BetaVAE model.')
     parser.add_argument(
         'action',
-        choices=['train', 'convert'],
+        choices=['train', 'convert', 'mig'],
         metavar='ACTION',
-        help='Train a new network or convert one to encoder-only.')
+        help='TRAIN a new network, CONVERT a pretrained network to '
+             'encoder-only, or find the MIG of a given network on a '
+             'particular dataset')
     parser.add_argument(
         '--weights',
         help='Path to weights file (initial weights to use if the train '
@@ -747,12 +796,11 @@ if __name__ == '__main__':
         help='Interpolation to use on resize')
     args = parser.parse_args()
 
-    #torch.manual_seed(0)
-    #numpy.random.seed(0)
-    #torch.use_deterministic_algorithms(True)
-    #torch.backends.cudnn.benchmark = False
-    #torch.cuda.manual_seed(0)
-
+    torch.manual_seed(0)
+    numpy.random.seed(0)
+    torch.use_deterministic_algorithms(True)
+    torch.backends.cudnn.benchmark = False
+    torch.cuda.manual_seed(0)
 
     if args.action == 'train':
         if not (args.beta and args.n_latent and args.dimensions and 
@@ -814,3 +862,11 @@ if __name__ == '__main__':
         for key in encoder_dict:
             encoder_dict[key] = full_dict[key]
         torch.save(encoder_dict, f'enc_only_{args.weights}')
+    elif args.action == 'mig':
+        if not args.weights or not args.dataset:
+            print('The optional arguments "--weights" and "--dataset" are '
+                  'required for MIG calculation.')
+        model = torch.load(args.weights)
+        print(f'Calculating MIG for model {args.weights}...')
+        mig = model.mig(args.dataset, 5)
+        print(f'MIG = {mig} nats')
