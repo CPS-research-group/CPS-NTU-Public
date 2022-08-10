@@ -45,7 +45,3 @@ The code for result analysis is in file `Analyze_result.ipynb`.
 
 You can get the experiment data from this [link](https://doi.org/10.21979/N9/5D1FBL).
 
-## Manifest of Papers
-| Branch | Paper | Link |
-|--------|-------|-----|
-| GLOBECOM2022 | Deadline-constrained Multi-resource Task Mapping and Allocation for Edge-Cloud Systems | TBD |
