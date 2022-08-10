@@ -1,0 +1,35 @@
+Information from function generate_tasksets:
+--------------------------------------------
+num of uuniform runs:  30
+num_tasks_vary:  [40, 60, 80, 100, 120]
+u_b_vary:  [0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]
+u_c_total:  35.49999999999999
+u_c_vary:  [1, 5, 9, 13, 17, 21, 25, 29, 33, 35.49999999999999]
+
+Information from main()
+-----------------------------------------------
+Number of taskset:  12000
+
+Number of Instances split by compute intensiveness:
+0-10: 2340
+10-20: 887
+20-30: 992
+30-40: 1018
+40-50: 1394
+50-60: 1461
+60-70: 1191
+70-80: 938
+80-90: 780
+90-100: 999
+
+Number of Instances split by bdwth intensiveness:
+0-10: 2150
+10-20: 2114
+20-30: 2338
+30-40: 1894
+40-50: 1335
+50-60: 1089
+60-70: 749
+70-80: 305
+80-90: 26
+90-100: 0
