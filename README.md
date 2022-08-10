@@ -1,11 +1,51 @@
-# CPS@NTU Paper Implementations
-This repository contains implementation source code for various conference and journal papers.
+# Deadline-constrained Multi-resource Task Mapping and Allocation for Edge-Cloud Systems
 
-1. Each branch contains the implementation required to reproduce exactly 1 conference paper
-2. License information and steps to run the code are provided in each branch
-3. All branches in this repository are marked as protected to ensure that an accurate record of research procedures is publically available; please do not submit PRs to this repository
+### 1. Environment
+
+OS: windows/linux
+
+language: python 3.9 or above
+
+ILP solver: [Gurobi - The Fastest Solver - Gurobi](https://www.gurobi.com/) 
+
+
+
+### 2. Dataset generation
+
+The code for generating data set is in file `Data_creation.ipynb`.
+
+- function `set_server_variables()` define edge-cloud system related parameters.
+- function `generate_tasksets()` generate required taskset
+- function `create_tasksets_and_analysis()` generate the taskset and do a basic analysis for the generated dataset.
+- function `main()` run the code and label the data.
+
+A summary of the data is in file `experiment data.txt`
+
+
+
+### 3. Zero Slack Greedy Algorithm
+
+The code for ZSG is in file `Heuristic_results_new_gamma_2.ipynb`.
+
+The result is split into several data files for parallel processing of ILP solver.
+
+
+
+### 4. Linear Discretization Method
+
+The code for ILP solver of LDM is in files `Gurobi_Test_Size_*0_*.ipynb`.
+
+Multiple files are used for parallel processing to shorten the code running time.
+
+
+
+### 5. Result Analysis
+
+The code for result analysis is in file `Analyze_result.ipynb`.
+
+You can get the experiment data from this [link](https://doi.org/10.21979/N9/5D1FBL).
 
 ## Manifest of Papers
 | Branch | Paper | Link |
 |--------|-------|-----|
-| DESTION2021 | Embedded out-of-distribution detection on an autonomous robot platform | [ACM](https://dl.acm.org/doi/abs/10.1145/3445034.3460509) |
+| GLOBECOM2022 | Deadline-constrained Multi-resource Task Mapping and Allocation for Edge-Cloud Systems | TBD |
