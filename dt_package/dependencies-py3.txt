@@ -7,7 +7,7 @@ PyYAML>=5.3.1
 requests>=2.23.0
 scipy>=1.4.1
 torch==1.12.1
-torchvision==0.10.0
+torchvision==0.13.1
 tqdm>=4.64.0
 protobuf<=3.20.1
 tensorboard>=2.4.1
