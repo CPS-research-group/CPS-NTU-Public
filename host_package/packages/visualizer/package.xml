@@ -1,0 +1,13 @@
+<package>
+  <name>visualizer</name>
+  <version>0.1.0</version>
+  <description>
+  Visualize the output from the running robot
+  </description>
+  <maintainer email="michaelj004@e.ntu.edu.sg">Michael Yuhas</maintainer>
+  <license>MIT</license>
+
+  <buildtool_depend>catkin</buildtool_depend>
+</package>
+
+

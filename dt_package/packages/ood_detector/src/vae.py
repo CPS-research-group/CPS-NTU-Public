@@ -340,7 +340,7 @@ if __name__ == '__main__':
         '--weights',
         help='Path to weights file')
     args = parser.parse_args()
-    original = torch.load(args.weights)
+    original = torch.load(args.weights, map_location=torch.device('cpu'))
     new = VaeEncoder(
         input_d=original.input_d,
         n_frames=original.n_frames,
