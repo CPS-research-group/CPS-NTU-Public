@@ -86,9 +86,9 @@ RUN dt-install-launchers "${LAUNCH_PATH}"
 
 # this package will run on the host, but needs to connect to our Duckiebot's
 # ROS master
-ENV VEHICLE_NAME safeduckie6
-ENV ROS_MASTER_URI http://safeduckie6.local:11311/
-ENV ROS_IP 127.0.0.1
+#ENV VEHICLE_NAME safeduckie6
+#ENV ROS_MASTER_URI http://192.168.0.172:11311/
+#ENV ROS_IP 192.168.0.224
 
 # define default command
 #CMD ["bash", "-c", "dt-launcher-${DT_LAUNCHER}"]
