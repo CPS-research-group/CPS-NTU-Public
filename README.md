@@ -8,7 +8,7 @@ This repository contains implementation source code for various conference and j
 ## Manifest of Papers
 | Branch | Paper | Link |
 |--------|-------|-----|
-| DESTION2021 | Embedded out-of-distribution detection on an autonomous robot platform | [ACM](https://dl.acm.org/doi/abs/10.1145/3445034.3460509) |
-| RTCSA2022 | Design Methodology for Deep Out-of-Distribution Detectors in Real-Time Cyber-Physical Systems | [IEEE](https://ieeexplore.ieee.org/document/9904799) |
+| DESTION2021 | Embedded out-of-distribution detection on an autonomous robot platform | [ACM Digital Library](https://dl.acm.org/doi/abs/10.1145/3445034.3460509) |
+| RTCSA2022 | Design Methodology for Deep Out-of-Distribution Detectors in Real-Time Cyber-Physical Systems | [IEEE Xplore](https://ieeexplore.ieee.org/document/9904799) |
 |GLOBECOM2022|Deadline-constrained Multi-resource Task Mapping and Allocation for Edge-Cloud Systems|TBD|
-| RTSS2022 | Demo Abstract: Real-Time Out-of-Distribution Detection on a Mobile Robot | [arXiv](https://arxiv.org/abs/2211.11520) |
+| RTSS2022 | Demo Abstract: Real-Time Out-of-Distribution Detection on a Mobile Robot | [RTSS@Work](http://2022.rtss.org/wp-content/uploads/2022/12/RTSSatWork2022.pdf) |
