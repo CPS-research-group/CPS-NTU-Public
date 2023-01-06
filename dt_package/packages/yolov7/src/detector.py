@@ -43,7 +43,6 @@ class ObjectDetector(DTROS):
         self.weights = torch.load(
             os.path.join(os.path.dirname(__file__),
             f'best{self.size}.pt'))
-        #self.model = self.weights['model']
         device = select_device('cpu')
         self.model = self.attempt_load(
             os.path.join(os.path.dirname(__file__), f'best{self.size}.pt'),
@@ -100,7 +99,7 @@ class ObjectDetector(DTROS):
         frame.type(torch.float32)
         frame = frame[None, :]
         results = self.model.forward(frame, augment=True)
-        results = non_max_suppression(results[0], conf_thres=0.1, iou_thres=0.5) # labels=[0, 1, 2])
+        results = non_max_suppression(results[0], conf_thres=0.1, iou_thres=0.5)
         rospy.loginfo('YOLO: Done...')
         rospy.loginfo(f'{results}')
 

@@ -30,30 +30,39 @@ class Visualizer(DTROS):
         self.sub = rospy.Subscriber(
             'safeduckie6/camera_node/image/compressed',
             CompressedImage,
-            self.callback,
+            self.camera_callback,
             queue_size=1)
         self.sub = rospy.Subscriber(
             'safeduckie6/ood_detector_node/score',
             Float32,
-            self.store_last_ood_score,
+            self.ood_score_callback,
             queue_size=1)
         rospy.loginfo('Visualizer node setup complete')
 
-    def store_last_ood_score(self, data):
-        self.last_score = data.data
-
-    def callback(self, data):
-        rospy.loginfo('Recieved a frame')
+    def ood_score_callback(self, data):
+        """Display the last frame and its associated OOD score as a bar in the
+        upper left hand corner of the image."""
+        if not self.last_frame:
+            return
+        rospy.loginfo('Recieved a score')
         frame = cv2.imdecode(
-            numpy.frombuffer(data.data, numpy.uint8),
+            numpy.frombuffer(self.last_frame, numpy.uint8),
             cv2.IMREAD_COLOR)
         frame = frame[::-1]
         frame = cv2.resize(frame, (640, 480))
-        if self.last_score:
-            # Draw Rectangle
+        cv2.rectangle(
+            frame,
+            (10, 10),
+            (30, int(data.data) + 10),
+            (0, 255, 0),
+            -1)
         cv2.imshow('Visualizer', frame)
-        cv2.waitKey(1)
-        #rospy.loginfo('Displayed a frame')
+        cv2.waitkey(1)
+
+    def camera_callback(self, data):
+        """Store a camera image for display when its OOD score arrives."""
+        rospy.loginfo('Recieved a frame')
+        self.last_frame = data
 
 
 if __name__ == '__main__':
