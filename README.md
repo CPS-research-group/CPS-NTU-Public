@@ -13,3 +13,4 @@ This repository contains implementation source code for various conference and j
 |GLOBECOM2022|Deadline-constrained Multi-resource Task Mapping and Allocation for Edge-Cloud Systems|[IEEE Xplore](https://ieeexplore.ieee.org/abstract/document/10001137)|
 | RTSS2022 | Demo Abstract: Real-Time Out-of-Distribution Detection on a Mobile Robot | [RTSS@Work](http://2022.rtss.org/wp-content/uploads/2022/12/RTSSatWork2022.pdf) |
 | RTSS2022 | Work-in-Progress: Deadline-Constrained Multi-Resource Allocation in Edge-Cloud System | [IEEE Xplore](https://ieeexplore.ieee.org/abstract/document/9984794)|
+| DATE2024 | Optimal Fixed Priority Scheduling in Multi-Stage Multi-Resource Distributed Real-Time Systems | [TBD]|
