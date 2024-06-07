@@ -1,0 +1,9 @@
+10 //no_test
+10 //no_ap_up
+10 //no_server
+100 //no_tasks
+0.7 //max_heaviness_taskset
+0.05 //heaviness_req_s1
+0.05 //heaviness_req_s2
+0.01 //heaviness_req_s3
+0.1 //heavy_definition
