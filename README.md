@@ -14,3 +14,4 @@ This repository contains implementation source code for various conference and j
 | RTSS2022 | Demo Abstract: Real-Time Out-of-Distribution Detection on a Mobile Robot | [RTSS@Work](http://2022.rtss.org/wp-content/uploads/2022/12/RTSSatWork2022.pdf) |
 | RTSS2022 | Work-in-Progress: Deadline-Constrained Multi-Resource Allocation in Edge-Cloud System | [IEEE Xplore](https://ieeexplore.ieee.org/abstract/document/9984794)|
 | DATE2024 | Optimal Fixed Priority Scheduling in Multi-Stage Multi-Resource Distributed Real-Time Systems | [Arxiv](https://arxiv.org/pdf/2403.13411) |
+| RTSS2024 | Energy-Efficient Real-Time Job Mapping and Resource Management in Mobile-Edge Computing | TBD |
