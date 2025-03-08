@@ -1,5 +1,5 @@
 # **CRLLK: Constrained Reinforcement Learning for Lane Keeping in Autonomous Driving**  
-This repository provides the **implementation** of **CRLLK**, a **Constrained Reinforcement Learning (RL) approach** for **lane-keeping in autonomous driving**, as described in our **AAMAS 2025** paper:  
+This repository provides the **implementation** of **CRLLK**, a **Constrained Reinforcement Learning (RL) approach** for **lane-keeping in autonomous driving**, as described in our **AAMAS 2025** [paper](https://github.com/CPS-research-group/CPS-NTU-Public/blob/AAMAS2025/CRLLK%3A%20Constrained%20Reinforcement%20Learning%20for%20Lane%20Keeping%20in%20Autonomous%20Driving.pdf):  
 📄 *CRLLK: Constrained Reinforcement Learning for Lane Keeping in Autonomous Driving*  
 
 ---
